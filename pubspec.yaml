@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  flutter_svg: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -28,10 +29,10 @@ flutter:
     - assets/svg/
 
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: HKGrotesk
+      fonts:
+        - asset: assets/fonts/HKGrotesk-Medium.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

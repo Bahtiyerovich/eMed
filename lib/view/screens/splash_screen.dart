@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:emed/core/constants/color_const.dart';
+import 'package:emed/core/widgets/label_widget.dart';
 import 'package:emed/view/auth/login/login_view.dart';
 import 'package:emed/view/auth/signup/view/signup_view.dart';
 import 'package:emed/view/home/view/home_view.dart';
@@ -35,7 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Container _eMedBody(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
-      child: Center(child: Text('E-Med', style: TextStyle(fontSize: 30, color: ColorConst.kWhite),)),
+      child: Center(
+        child: LabelWidget(),
+      ),
     );
   }
 }
