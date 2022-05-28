@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:emed/core/constants/color_const.dart';
-import 'package:emed/core/widgets/label_widget.dart';
 import 'package:emed/view/auth/login/login_view.dart';
-import 'package:emed/view/auth/signup/view/signup_view.dart';
+import 'package:emed/view/auth/signup/signup_view.dart';
 import 'package:emed/view/home/view/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -37,7 +37,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return Container(
       height: MediaQuery.of(context).size.height,
       child: Center(
-        child: LabelWidget(),
+        child: SizedBox(
+      height: 150,
+      child: SvgPicture.asset('assets/svg/iconlabel.svg'),
+    ),
       ),
     );
   }

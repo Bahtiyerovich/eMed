@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:emed/view/auth/login/login_view.dart';
-import 'package:emed/view/auth/signup/view/signup_view.dart';
+import 'package:emed/view/auth/signup/signup_view.dart';
 import 'package:emed/view/home/view/home_view.dart';
 import 'package:emed/view/screens/splash_screen.dart';
 
