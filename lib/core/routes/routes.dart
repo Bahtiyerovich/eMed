@@ -1,4 +1,3 @@
-
 import 'package:emed/view/auth/signin/signin_view.dart';
 import 'package:flutter/material.dart';
 import 'package:emed/view/auth/login_view.dart';
@@ -16,14 +15,13 @@ class Routes {
       case '/splashscreen':
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case '/loginview':
-        return MaterialPageRoute(
-            builder: (context) => const LoginView());
+        return MaterialPageRoute(builder: (context) => const LoginView());
       case '/signupview':
         return MaterialPageRoute(builder: (context) => const SignUpView());
       case '/signinview':
         return MaterialPageRoute(builder: (context) => const SignInView());
       case '/homeview':
-        return MaterialPageRoute(builder: (context) => const EmedHomeView());
+        return MaterialPageRoute(builder: (context) => EmedHomeView());
     }
   }
 }

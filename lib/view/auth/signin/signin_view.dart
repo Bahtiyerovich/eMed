@@ -1,6 +1,6 @@
 import 'package:emed/core/base/base_view/base_view.dart';
-import 'package:emed/core/constants/color_const.dart';
 import 'package:emed/core/widgets/appbar.dart';
+import 'package:emed/core/widgets/errorsnackbar.dart';
 import 'package:emed/core/widgets/form_view_widget.dart';
 import 'package:emed/view/auth/cubit/auth_cubit.dart';
 import 'package:emed/view/auth/state/auth_state.dart';
@@ -53,8 +53,5 @@ class _SignInViewState extends State<SignInView> {
         });
   }
 
-  showErrorSnackBar(context, String msg) {
-    return ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text("Error: $msg")));
-  }
+  
 }
