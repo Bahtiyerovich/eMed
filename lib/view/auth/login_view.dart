@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.only(
                 top: context.h * 0.055,
-                left: context.w * 0.03,
+                left: context.w * 0.04,
                 right: context.w * 0.03,
               ),
               child: Column(
@@ -47,19 +47,21 @@ class LoginView extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: context.h * 0.25),
+                  SizedBox(height: context.h * 0.22),
                   EMedBlueButton(
                       index: 1,
                       text: 'Get Started',
                       currentPage: 1,
-                      onpressed: () {}),
+                      onpressed: () {
+                        Navigator.pushNamed(context, '/signupview');
+                      }),
                   SizedBox(height: context.h * 0.01),
                   EMedWhiteButton(
                       index: 1,
                       text: 'Log In',
                       currentPage: 1,
                       onpressed: () {
-                        Navigator.pushNamed(context, '/signupview');
+                        Navigator.pushNamed(context, '/signinview');
                       }),
                 ],
               ),

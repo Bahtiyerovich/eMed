@@ -3,6 +3,7 @@ import 'package:emed/core/components/input_comp.dart';
 import 'package:emed/core/constants/color_const.dart';
 import 'package:emed/core/constants/font_const.dart';
 import 'package:emed/core/extentions/context_extension.dart';
+import 'package:emed/core/widgets/appbar.dart';
 import 'package:emed/core/widgets/emed_text.dart';
 import 'package:emed/core/widgets/emed_button.dart';
 import 'package:flutter/material.dart';
@@ -26,15 +27,7 @@ class _SignUpViewState extends State<SignUpView> {
         viewModal: SignUpView,
         onPageBuilder: (context, widget) {
           return Scaffold(
-            appBar: AppBar(
-              backgroundColor: ColorConst.kWhite,
-              elevation: 0.5,
-              foregroundColor: ColorConst.kMainBlue,
-              title: EmedText(
-                text: 'Sign Up',
-                size: FontConst.kLargeFont,
-              ),
-            ),
+            appBar: EMedAppBar(title: 'Sign Up',),
             body: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.all(context.h * 0.03),
@@ -131,7 +124,7 @@ class _SignUpViewState extends State<SignUpView> {
                         ],
                       ),
                     ),
-                    SizedBox(height: context.h * 0.18),
+                    SizedBox(height: context.h * 0.15),
                     EMedBlueButton(
                         index: 1,
                         text: 'Continue',

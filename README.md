@@ -1,16 +1,25 @@
-# emed
+A new medical project.
 
-A new Flutter project.
+# e-med
 
-## Getting Started
+## auth pages
 
-This project is a starting point for a Flutter application.
+### sign up
 
-A few resources to get you started if this is your first Flutter project:
+<img src="./screenshots/1.png" alt="On Board" width="45%">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### login
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="./screenshots/2.png" alt="Login" width="45%">
+
+### home
+
+<img src="./screenshots/3.png" alt="Sign In" width="45%">
+
+### 
+
+<img src="./screenshots/4.png" alt="Home" width="45%">
+
+### 
+
+<img src="./screenshots/5.png" alt="Bet" width="45%">

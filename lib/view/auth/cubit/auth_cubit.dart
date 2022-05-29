@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  TextEditingController nameConrtoller = TextEditingController();
-  TextEditingController phonrConrtoller = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phonrController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   bool isHidden = true;

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:emed/core/constants/color_const.dart';
-import 'package:emed/view/auth/login/login_view.dart';
+import 'package:emed/view/auth/login_view.dart';
 import 'package:emed/view/auth/signup/signup_view.dart';
 import 'package:emed/view/home/view/home_view.dart';
 import 'package:flutter/material.dart';

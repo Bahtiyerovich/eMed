@@ -1,16 +1,14 @@
-// import 'dart:ui';
-import 'package:emed/core/constants/color_const.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:flutter/material.dart';
+import 'package:emed/core/constants/color_const.dart';
+import 'package:emed/core/constants/font_const.dart';
+import 'package:emed/core/widgets/emed_text.dart';
 
 class EMedAppBar extends StatelessWidget with PreferredSizeWidget {
-  final String? title;
+  final String title;
   final Color? color;
-   Color? textColor = ColorConst.kMainBlue;
+  Color? textColor = ColorConst.kMainBlue;
 
-   EMedAppBar({Key? key, this.title, this.textColor, this.color})
+  EMedAppBar({Key? key, required this.title, this.textColor, this.color})
       : super(key: key);
 
   @override
@@ -18,21 +16,17 @@ class EMedAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    var widget;
     return AppBar(
-      backgroundColor: Colors.black,
-      elevation: 0,
+      backgroundColor: ColorConst.kWhite,
+      elevation: 0.5,
       centerTitle: true,
-      
-      title:  Text(
-              'Sign Up',
-              style: TextStyle(
-                fontFamily: 'HKGrotesk',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: textColor,
-                
-              ),
-            ),
+      foregroundColor: ColorConst.kMainBlue,
+      title: EmedText(
+        text: title,
+        size: FontConst.kLargeFont,
+        color: textColor,
+      ),
     );
   }
 }

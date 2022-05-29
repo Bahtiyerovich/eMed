@@ -1,5 +1,6 @@
 import 'package:emed/core/constants/color_const.dart';
 import 'package:emed/core/constants/font_const.dart';
+import 'package:emed/core/extentions/context_extension.dart';
 import 'package:emed/core/widgets/emed_text.dart';
 import 'package:flutter/material.dart';
 
@@ -36,15 +37,16 @@ class _EMedWhiteButtonState extends State<EMedWhiteButton> {
     return OutlinedButton(
       onPressed: widget.onpressed,
       style: OutlinedButton.styleFrom(
+        side: BorderSide(color: ColorConst.kMainBlue),
         elevation: 0,
-        fixedSize: Size(350, 55),
+        fixedSize: Size(context.w *0.85, context.h*0.08),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        primary: color = ColorConst.kWhite,
+        primary: color = ColorConst.kMainBlue,
       ),
       child: FittedBox(
         child: EmedText(
             text: widget.text,
-            size: FontConst.kMediumFont,
+            size: FontConst.kLargeFont,
             color: ColorConst.kMainBlue),
       ),
     );
