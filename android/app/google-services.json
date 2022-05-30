@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "318897496679",
+    "project_id": "emed-8e6a5",
+    "storage_bucket": "emed-8e6a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318897496679:android:982eaa379c88438af0aac2",
+        "android_client_info": {
+          "package_name": "com.bahtiyerovich.emed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318897496679-6svuljmp3ia052mru99ssminpn08qqnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1ZXgpcNlcL47_91kw71vWIbiEGfG8PRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318897496679-6svuljmp3ia052mru99ssminpn08qqnj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
