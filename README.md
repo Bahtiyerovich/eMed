@@ -17,6 +17,5 @@ A new medical project.
 
 ### home
 
-<img src="./screenshots/3.png" alt="Sign In" width="40%">
 
 
