@@ -15,7 +15,7 @@ class EmedHomeView extends StatelessWidget {
   EmedHomeView({Key? key}) : super(key: key);
 
   List<Widget> bodies = [
-     HomeBody(),
+    HomeBody(),
     const TrarmentsBody(),
     const DoctorBody(),
     const HospitalBody(),
@@ -23,39 +23,44 @@ class EmedHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView(
-        viewModal: EmedHomeView,
-        onPageBuilder: (context, widget) {
-          return  BlocConsumer<HomeCubit, HomeState>(
-          listener: (context, state) {
-            if (state is HomeError) {
-              showErrorSnackBar(context, "Another Error");
-            }
+    return SafeArea(
+      child: Scaffold(
+        body: BaseView(
+          viewModal: EmedHomeView,
+          onPageBuilder: (context, widget) {
+            return BlocConsumer<HomeCubit, HomeState>(
+              listener: (context, state) {
+                if (state is HomeError) {
+                  showErrorSnackBar(context, "Another Error");
+                }
+              },
+              builder: (context, state) {
+                if (state is HomeInitial) {
+                  return bodies[context.watch<HomeCubit>().currentIndex];
+                } else if (state is HomeLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                } else {
+                  return showErrorSnackBar(context, "Another Error");
+                }
+              },
+            );
           },
-          builder: (context, state) {
-            if (state is HomeInitial) {
-              return bodies[context.watch<HomeCubit>().currentIndex];
-            } else if (state is HomeLoading) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(),
-              );
-            } else {
-              return showErrorSnackBar(context, "Another Error");
-            }
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          // fixedColor: Colors.black,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.red,
+          currentIndex: context.watch<HomeCubit>().currentIndex,
+          // backgroundColor: ColorConst.kWhite,
+          items: itemsButton(context),
+          onTap: (index) {
+            context.read<HomeCubit>().changePageHome(index);
           },
-          ),
-      
-      bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.yellow,
-        currentIndex: context.watch<HomeCubit>().currentIndex,
-        backgroundColor: ColorConst.kWhite,
-        items: itemsButton(context),
-        onTap: (index) {
-          context.read<HomeCubit>().changePageHome(index);
-        },
+        ),
       ),
-        
-  );
+    );
   }
 
   itemsButton(BuildContext context) {

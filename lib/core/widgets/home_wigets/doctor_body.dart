@@ -11,6 +11,9 @@ class DoctorBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height: context.h * 0.05,
+          ),
           Center(
             child: GestureDetector(
               child: Container(
@@ -30,6 +33,9 @@ class DoctorBody extends StatelessWidget {
               ),
               onTap: () {},
             ),
+          ),
+          SizedBox(
+            height: context.h * 0.05,
           ),
           Padding(
             padding: EdgeInsets.only(left: context.w * 0.07),

@@ -36,7 +36,7 @@ class FormFieldWidget extends StatelessWidget {
                     ),
                     TextFormField(
                       keyboardType: TextInputType.phone,
-                      controller: context.watch<AuthCubit>().phonrController,
+                      // controller: context.watch<AuthCubit>().phonrController,
                       decoration: InputComp.inputDecoration(
                         hintText: "Your phone number...",
                       ),
@@ -56,23 +56,22 @@ class FormFieldWidget extends StatelessWidget {
                       ),
                     ),
                     TextFormField(
-                      obscureText: context.watch<AuthCubit>().isHidden,
-                      controller: context.watch<AuthCubit>().passwordController,
+                      // obscureText: context.watch<AuthCubit>().isHidden,
+                      // controller: context.watch<AuthCubit>().passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
                       decoration: InputComp.inputDecoration(
                         hintText: "Your password...",
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            context.watch<AuthCubit>().isHidden
-                                ? Icons.visibility_off
-                                : Icons.remove_red_eye,
-                          ),
-                          onPressed: () {
-                            BlocProvider.of<AuthCubit>(context)
-                                .changeHiddenPass();
-                          },
-                        ),
+                        // suffixIcon: IconButton(
+                        //   icon: Icon(
+                        //     context.watch<AuthCubit>().isHidden
+                        //         ? Icons.visibility_off
+                        //         : Icons.remove_red_eye,
+                        //   ),
+                        //   onPressed: () {
+                            
+                        //   },
+                        // ),
                       ),
                       validator: (password) {
                         if (password!.isEmpty) {

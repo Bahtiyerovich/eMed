@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:emed/core/widgets/emed_text.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class BaseView<T> extends StatefulWidget {
 }
 
 class _BaseViewState extends State<BaseView> {
-  var subscription;
+  StreamSubscription? subscription;
   var internetStatus;
   @override
   void initState() {
@@ -48,7 +50,7 @@ class _BaseViewState extends State<BaseView> {
 
   @override
   void dispose() {
-    subscription.dispose();
+    subscription!.cancel();
     super.dispose();
     if (widget.onDispose != null) widget.onDispose!();
   }

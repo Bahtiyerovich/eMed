@@ -1,6 +1,5 @@
 import 'package:emed/core/constants/color_const.dart';
 import 'package:emed/core/constants/font_const.dart';
-import 'package:emed/core/extentions/context_extension.dart';
 import 'package:emed/core/widgets/emed_text.dart';
 import 'package:flutter/material.dart';
 
@@ -39,14 +38,14 @@ class _EMedBlueButtonState extends State<EMedBlueButton> {
       onPressed: widget.onpressed,
       style: ElevatedButton.styleFrom(
           elevation: 0,
-          fixedSize: Size(context.w *0.85, context.h*0.08),
+          fixedSize: Size(350, 55),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           primary: color = ColorConst.kMainBlue),
       child: FittedBox(
         child: EmedText(
             text: widget.text,
-            size: FontConst.kLargeFont,
+            size: FontConst.kMediumFont,
             color: ColorConst.kWhite),
       ),
     );

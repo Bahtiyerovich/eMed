@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class InputComp {
   static inputDecoration({
-    required String hintText,
+     String? hintText,
      IconButton? suffixIcon,
   }) =>
       InputDecoration(
