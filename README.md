@@ -19,10 +19,4 @@ A new medical project.
 
 <img src="./screenshots/3.png" alt="Sign In" width="40%">
 
-### 
 
-<img src="./screenshots/4.png" alt="Home" width="40%">
-
-### 
-
-<img src="./screenshots/5.png" alt="Bet" width="40%">
