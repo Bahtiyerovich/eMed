@@ -28,7 +28,7 @@ class _SignInViewState extends State<SignInView> {
                 textColor: Colors.black,
                 title: 'Sign In',
               ),
-              body: BlocConsumer<AuthCubit, AuthState>(
+              body: BlocConsumer(
                 listener: (context, state) {
                   if (state is AuthError) {
                     showErrorSnackBar(context, "Another Error");

@@ -14,10 +14,17 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.0
-  connectivity_plus: ^2.3.0
+  connectivity_plus: ^2.3.2
   flutter_bloc: ^8.0.1
   bloc: ^8.0.3
   syncfusion_flutter_calendar: ^20.1.57
+  firebase_core: ^1.17.1
+  firebase_auth: ^3.3.19
+  mask_text_input_formatter: ^2.3.0
+  pin_code_text_field: ^1.8.0
+  lottie: ^1.3.0
+  flutter_screen_lock: ^5.0.12 
+  local_auth: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -31,7 +38,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
-
+    - assets/lottie/
   # example:
   fonts:
     - family: HKGrotesk

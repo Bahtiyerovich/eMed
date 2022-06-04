@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:emed/core/constants/color_const.dart';
+import 'package:emed/core/extentions/context_extension.dart';
 import 'package:emed/view/auth/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Container _eMedBody(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: context.h,
       child: Center(
         child: SizedBox(
       height: 150,

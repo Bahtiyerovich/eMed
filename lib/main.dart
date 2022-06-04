@@ -37,17 +37,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//! text boshqattan yozish
-
 //! font va mediaquery ni boshqa kod bilan yozish
-
-//! button widget boshqattan qilish chetiga linya bilan
-
-//! appBar boshqattan yozish kerak
-//! appBar da hamma WIDGET ni rangini bir hil qilish
 
 //! 04 08 video telefon cherez firebase
 //! 02 25 video theme ranglarini
 //! 02 23 video page.view
 //! 02 21 video buttonnavbar
 
+//! LOCKSREEN LOCKPROBNIK file da
