@@ -20,35 +20,35 @@ class LoginView extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             backgroundColor: ColorConst.kWhite,
             body: Padding(
-              padding: EdgeInsets.only(
-                top: context.h * 0.055,
-                left: context.w * 0.03,
-                right: context.w * 0.03,
+              padding: const EdgeInsets.only(
+                left: 20.0,
+                right: 20.0,
+                bottom: 20.0,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: context.h * 0.06),
+                  const Spacer(),
                   SizedBox(
                     height: context.h * 0.15,
                     child: SvgPicture.asset('assets/svg/iconlogin.svg'),
                   ),
-                  SizedBox(height: context.h * 0.05),
+                  const Spacer(),
                   EmedText(
                     text: 'Your medical data \nis always with you',
                     color: Colors.black,
-                    size: FontConst.kLargeFont * 2,
+                    size: 40.0,
+                    fontWeight: FontWeight.bold,
                   ),
-                  SizedBox(height: context.h * 0.045),
+                  const SizedBox(height: 16.0),
                   Text(
                     'Nunc orci sed sed posuere volutpat varius egestas sit. Amet, suscipit eget dis fusce quam in aliquet pulvinar.',
                     style: TextStyle(
-                      color: Colors.black54,
                       fontSize: FontConst.kMediumFont,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: context.h * 0.25),
+                  const Spacer(flex: 3),
                   EMedBlueButton(
                       index: 1,
                       text: 'Get Started',
@@ -56,7 +56,7 @@ class LoginView extends StatelessWidget {
                       onpressed: () {
                         Navigator.pushNamed(context, '/signupview');
                       }),
-                  SizedBox(height: context.h * 0.01),
+                  const SizedBox(height: 16.0),
                   EMedWhiteButton(
                       index: 1,
                       text: 'Log In',

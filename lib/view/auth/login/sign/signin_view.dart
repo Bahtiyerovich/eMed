@@ -10,6 +10,7 @@ import 'package:emed/view/auth/cubit/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({Key? key}) : super(key: key);
@@ -20,10 +21,13 @@ class SignInView extends StatefulWidget {
 
 class _SignInViewState extends State<SignInView> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController(text:"+998");
+
+  final TextEditingController _phoneController =
+      TextEditingController(text: "+998");
   final TextEditingController _passwordController = TextEditingController();
+
   bool isHidden = false;
+
   @override
   Widget build(BuildContext context) {
     return BaseView(
@@ -119,7 +123,7 @@ class _SignInViewState extends State<SignInView> {
                                 top: context.h * 0.01,
                                 bottom: context.h * 0.01),
                             child: EmedText(
-                              text: 'Create password',
+                              text: 'Enter password',
                               color: Colors.black,
                               size: FontConst.kMediumFont,
                             ),
@@ -128,7 +132,7 @@ class _SignInViewState extends State<SignInView> {
                             obscureText: !isHidden,
                             controller: _passwordController,
                             decoration: InputComp.inputDecoration(
-                              hintText: "Create your new password...",
+                              hintText: "Enter your new password...",
                               suffixIcon: IconButton(
                                 icon: Icon(isHidden
                                     ? Icons.remove_red_eye_rounded
@@ -149,40 +153,26 @@ class _SignInViewState extends State<SignInView> {
                       ),
                     ),
                     SizedBox(height: context.h * 0.18),
-                    BlocBuilder<AuthCubit, AuthState>(
-                        builder: (context, state) {
-                      if (state is LoginLoading) {
-                        return const CircularProgressIndicator();
-                      }
-                      return Container();
-                    }),
-                    BlocListener<AuthCubit, AuthState>(
-                      child: Container(),
-                      listener: (context, state) {
-                        if (state is LoginSuccess) {
-                          Navigator.pushNamed(
-                            context,
-                            '/homeview',
-                          );
-                        } else if (state is LoginError) {
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(state.errorText),
-                            duration: Duration(seconds: 1),
-                            backgroundColor: Colors.red,
-                          ));
-                        }
-                      },
-                    ),
-                    EMedBlueButton(
-                      index: 1,
-                      text: 'Log In',
-                      currentPage: 1,
-                      onpressed: () {
+                    RoundedLoadingButton(
+                      animateOnTap: true,
+                      controller: context.read<AuthCubit>().btnController,
+                      color: ColorConst.kMainBlue,
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          BlocProvider.of<AuthCubit>(context).login(_phoneController.text,_passwordController.text);
+                          await context.read<AuthCubit>().login(context,
+                              _phoneController.text, _passwordController.text);
+                        } else {
+                          context.read<AuthCubit>().btnController.reset();
                         }
                       },
-                    )
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      elevation: 0,
+                      child: EmedText(
+                        text: 'Log in',
+                        size: 16.0,
+                        color: Colors.white,
+                      ),
+                    ),
                   ],
                 ),
               ),

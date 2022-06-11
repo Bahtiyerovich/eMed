@@ -1,4 +1,4 @@
-package com.bahtiyerovich.emed
+package com.universe.emed
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -3,10 +3,13 @@ import 'package:emed/core/components/input_comp.dart';
 import 'package:emed/core/constants/color_const.dart';
 import 'package:emed/core/constants/font_const.dart';
 import 'package:emed/core/extentions/context_extension.dart';
+import 'package:emed/core/widgets/appbar.dart';
 import 'package:emed/core/widgets/emed_text.dart';
-import 'package:emed/core/widgets/emed_button.dart';
+import 'package:emed/view/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({Key? key}) : super(key: key);
@@ -18,41 +21,20 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _phoneController =
+      TextEditingController(text: '+998 ');
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmController = TextEditingController();
+
   bool isHidden = false;
+
   @override
   Widget build(BuildContext context) {
     return BaseView(
         viewModal: SignUpView,
         onPageBuilder: (context, widget) {
           return Scaffold(
-            resizeToAvoidBottomInset: false,
-            appBar: AppBar(
-              leading: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: Colors.blue,
-                    ),
-                    Text("Back")
-                  ],
-                ),
-              ),
-              centerTitle: true,
-              backgroundColor: ColorConst.kWhite,
-              elevation: 0.5,
-              foregroundColor: ColorConst.kMainBlue,
-              title: EmedText(
-                text: 'Sign Up',
-                size: FontConst.kLargeFont,
-              ),
-            ),
+            appBar: EMedAppBar(title: 'Sign Up'),
             body: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.all(context.h * 0.03),
@@ -86,6 +68,12 @@ class _SignUpViewState extends State<SignUpView> {
                             decoration: InputComp.inputDecoration(
                               hintText: "Enter your full name...",
                             ),
+                            validator: (text) {
+                              if (text!.length < 3) {
+                                return "Please, enter your full name!";
+                              }
+                              return null;
+                            },
                           ),
                           Padding(
                             padding: EdgeInsets.only(
@@ -98,7 +86,7 @@ class _SignUpViewState extends State<SignUpView> {
                             ),
                           ),
                           TextFormField(
-                            initialValue: '+998',
+                            controller: _phoneController,
                             inputFormatters: [
                               MaskTextInputFormatter(
                                   mask: '+998 (##) ###-##-##',
@@ -106,9 +94,7 @@ class _SignUpViewState extends State<SignUpView> {
                                   type: MaskAutoCompletionType.lazy)
                             ],
                             keyboardType: TextInputType.number,
-                            decoration: InputComp.inputDecoration(
-                                // hintText: "+998",
-                                ),
+                            decoration: InputComp.inputDecoration(),
                             validator: (text) {
                               if (text!.length != 19) {
                                 return "Number  must be +998(XX) XXX-XX-XX !";
@@ -144,6 +130,7 @@ class _SignUpViewState extends State<SignUpView> {
                             decoration: InputComp.inputDecoration(
                               hintText: "Create your new password...",
                               suffixIcon: IconButton(
+                                splashRadius: 20.0,
                                 icon: Icon(isHidden
                                     ? Icons.remove_red_eye_rounded
                                     : Icons.remove_red_eye_outlined),
@@ -159,17 +146,66 @@ class _SignUpViewState extends State<SignUpView> {
                               }
                             },
                           ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: context.h * 0.05,
+                                bottom: context.h * 0.01),
+                            child: EmedText(
+                              text: 'Confirm password',
+                              color: Colors.black,
+                              size: FontConst.kMediumFont,
+                            ),
+                          ),
+                          TextFormField(
+                            obscureText: !isHidden,
+                            controller: _confirmController,
+                            decoration: InputComp.inputDecoration(
+                              hintText: "Confirm your new password...",
+                              suffixIcon: IconButton(
+                                splashRadius: 20.0,
+                                icon: Icon(isHidden
+                                    ? Icons.remove_red_eye_rounded
+                                    : Icons.remove_red_eye_outlined),
+                                onPressed: () {
+                                  isHidden = !isHidden;
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                            validator: (text) {
+                              if (_passwordController.text !=
+                                  _confirmController.text) {
+                                return "Password entered incorrectly!";
+                              }
+                            },
+                          ),
                         ],
                       ),
                     ),
                     SizedBox(height: context.h * 0.12),
-                    EMedBlueButton(
-                        index: 1,
+                    RoundedLoadingButton(
+                      animateOnTap: true,
+                      controller: context.read<AuthCubit>().btnController,
+                      color: ColorConst.kMainBlue,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          context.read<AuthCubit>().signup(
+                              _phoneController.text.trim(),
+                              _nameController.text.trim(),
+                              _passwordController.text.trim(),
+                              context);
+                        } else {
+                          context.read<AuthCubit>().btnController.reset();
+                        }
+                      },
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      elevation: 0,
+                      child: EmedText(
                         text: 'Continue',
-                        currentPage: 1,
-                        onpressed: () {
-                          Navigator.pushNamed(context, '/smsview');
-                        })
+                        size: 16.0,
+                        color: Colors.white,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -177,21 +213,4 @@ class _SignUpViewState extends State<SignUpView> {
           );
         });
   }
-
-  // signIn() {
-  //   if (_formKey.currentState!.validate()) {
-  //     for (Map userpass in UserInfo.users) {
-  //       if (userpass.keys.first == _nameController.text &&
-  //           userpass.values.first == _passwordController.text) {
-  //         Navigator.pushReplacementNamed(
-  //           context,
-  //           '/score',
-  //           arguments: _usernameController.text,
-  //         );
-  //         return true;
-  //       }
-  //     }
-  //     MyMessenger.showMyMessenger("You have entered an invalid username or password", context);
-  //   }
-  // }
 }

@@ -1,8 +1,8 @@
-import 'dart:async';
 import 'package:emed/core/constants/color_const.dart';
-import 'package:emed/core/extentions/context_extension.dart';
-import 'package:emed/view/auth/login/login_view.dart';
+import 'package:emed/view/auth/cubit/auth_cubit.dart';
+import 'package:emed/view/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,11 +16,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginView()),
-      );
+
+    context.read<HomeCubit>().calendarCntrl.selectedDate = DateTime(
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+    );
+    context.read<AuthCubit>().getUserCrefential().then((value) {
+      if (value) {
+        Navigator.pushReplacementNamed(context, "/homeview");
+      } else {
+        Navigator.pushReplacementNamed(context, "/loginview");
+      }
     });
   }
 
@@ -34,12 +41,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Container _eMedBody(BuildContext context) {
     return Container(
-      height: context.h,
+      height: MediaQuery.of(context).size.height,
       child: Center(
         child: SizedBox(
-      height: 150,
-      child: SvgPicture.asset('assets/svg/iconlabel.svg'),
-    ),
+          height: 150,
+          child: SvgPicture.asset('assets/svg/iconlabel.svg'),
+        ),
       ),
     );
   }

@@ -164,12 +164,11 @@ class _BaseViewState extends State<BaseView> with WidgetsBindingObserver {
             color: Colors.blue,
           ),
           deleteButton: const Icon(Icons.delete),
-          // confirmation: true, //! new secret code
           screenLockConfig: const ScreenLockConfig(
             backgroundColor: Colors.white,
           ),
           correctString:
-              '1234', //! get strorage bilan cache ga kod yoziladi, birinchi yozilganda
+              '1234',
           canCancel: false,
           
           didConfirmed: (pin) {

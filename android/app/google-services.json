@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "318897496679",
-    "project_id": "emed-8e6a5",
-    "storage_bucket": "emed-8e6a5.appspot.com"
+    "project_number": "602783395035",
+    "project_id": "emed-f8821",
+    "storage_bucket": "emed-f8821.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:318897496679:android:982eaa379c88438af0aac2",
+        "mobilesdk_app_id": "1:602783395035:android:cbe1f72354e57aa13c70fe",
         "android_client_info": {
-          "package_name": "com.bahtiyerovich.emed"
+          "package_name": "com.universe.emed"
         }
       },
       "oauth_client": [
         {
-          "client_id": "318897496679-6svuljmp3ia052mru99ssminpn08qqnj.apps.googleusercontent.com",
+          "client_id": "602783395035-r87jm765p63hcp0en1i0m3ov5nbmt1l7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB1ZXgpcNlcL47_91kw71vWIbiEGfG8PRQ"
+          "current_key": "AIzaSyCbRqH2VAiAYi1wlIDcAf6yjaSj848gi0Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "318897496679-6svuljmp3ia052mru99ssminpn08qqnj.apps.googleusercontent.com",
+              "client_id": "602783395035-r87jm765p63hcp0en1i0m3ov5nbmt1l7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:emed/core/components/Theme/theme_comp.dart';
 import 'package:emed/core/routes/routes.dart';
 import 'package:emed/view/auth/cubit/auth_cubit.dart';
@@ -7,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
+  HttpOverrides.global = MyHttpOverrides();
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -37,11 +41,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//! font va mediaquery ni boshqa kod bilan yozish
-
-//! 04 08 video telefon cherez firebase
-//! 02 25 video theme ranglarini
-//! 02 23 video page.view
-//! 02 21 video buttonnavbar
-
-//! LOCKSREEN LOCKPROBNIK file da
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}

@@ -11,7 +11,7 @@ class EmedText extends StatelessWidget {
 
   EmedText({
     Key? key,
-    this.color = const Color(0xFF332d2b),
+    this.color = const Color(0xFF6A6975),
     required this.text,
     this.size = 0,
     this.height = 1.2,
